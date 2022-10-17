@@ -1,4 +1,10 @@
 window.onload = () => {
+	scs = document.querySelector("#seconds")
+	i = 0
+	setInterval(() => {
+		if (i == 15) i = 0
+		scs.innerText = `Interval : ${++i} s`
+	}, 1000)
 	function pollingStatus() {
 		const url = "http://localhost:8080/status"
 		fetch(url)
@@ -22,5 +28,5 @@ window.onload = () => {
 			})
 			.catch(err => console.error(err))
 	}
-	setInterval(pollingStatus, 1000)
+	setInterval(pollingStatus, 1000*15)
 }
